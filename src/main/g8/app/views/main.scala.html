@@ -1,0 +1,51 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * four arguments, a `String` for the description in the meta
+ * attribute: @description, a `String` for the author in the meta
+ * attribute: @author, a `String` for the title of the page: @title
+ * and an `Html` object to insert into the body of the page.
+ *@
+
+@* Use WebJars to load css/javascript assets *@
+@this(webJarsUtil: org.webjars.play.WebJarsUtil)
+
+@* Arguments *@
+@(description: String, author: String, title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		@* Responsiveness *@
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		@* description and author parameters *@
+        <meta name="description" content="@description">
+        <meta name="author" content="@author">
+
+		@* Place your favicon in public/images *@
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+
+        <!-- Google Icon Fonts, Materialize-css -->
+		@Html(webJarsUtil.css("materialize.min.css"))
+
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+
+    </head>
+    <body>
+        @* And here's where we render the `Html` object containing the page content. *@
+         
+        @content
+
+		@* Materialize minified javascript, jquery is used and imported before *@
+        @Html(webJarsUtil.script("jquery.min.js"))
+		@Html(webJarsUtil.script("materialize.min.js"))
+        <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+    </body>
+</html>
