@@ -44,8 +44,11 @@
         @content
 
 		@* Materialize minified javascript, jquery is used and imported before *@
-        @Html(webJarsUtil.script("jquery.min.js"))
+		@* webfont is used to load google fonts, see public/javascript/main.js *@
+		@Html(webJarsUtil.script("jquery/3.2.1/dist/jquery.min.js"))
+		@Html(webJarsUtil.script("webfontloader/1.6.24/webfontloader.js"))
 		@Html(webJarsUtil.script("materialize.min.js"))
+
         <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
     </body>
 </html>
